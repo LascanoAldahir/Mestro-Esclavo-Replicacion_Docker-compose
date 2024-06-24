@@ -1,0 +1,30 @@
+version: '3'
+services:
+  myssql_maestro:
+    image: mysql:5.7
+    container_name: maestro
+    environment:
+      MYSQL_ROOT_PASSWORD: root 
+      MYSQL_DATABASE: replica
+    ports:
+      - "3008:3306"
+    command: --server-id=1 --log-bin=mysql --binlog-do-db=replica
+
+  mysql_esclavo:
+    image: mysql:5.7
+    container_name: mysql_esclavo
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: replica
+    ports:
+      - "3009:3306"
+    command: --server-id=2 --log-bin=mysql --binlog-do-db=replica
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOSTS: "myssql_maestro, mysql_esclavo"
+      PMA_ARBITRARY: 1
