@@ -1,2 +1,12 @@
-docker compose up -d 
+docker compose up -d <br> 
+ESCLAVO <br>
+CHANGE MASTER TO MASTER_HOST='mysql_maestro'; <br>
+MASTER_USER='root', MASTER_PASSWORD='root'; <br>
+
+CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.000003', MASTER_LOG_POS=466; <br>
+<br>
+START SLAVE;
+<br>
+SHOW SLAVE STATUS;
+
 <br>![image](https://github.com/LascanoAldahir/Replicacion_Docker-compose/assets/139184732/9006fe0e-b4db-4119-b6be-f8912ddfef5f)
