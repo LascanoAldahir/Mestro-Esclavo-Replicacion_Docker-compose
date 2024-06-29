@@ -1,5 +1,6 @@
 docker compose up -d <br> 
 ESCLAVO <br>
+SHOW MASTER STATUS el cual nos dará el File y Position <br>
 CHANGE MASTER TO MASTER_HOST='mysql_maestro'; <br>
 MASTER_USER='root', MASTER_PASSWORD='root'; <br>
 
